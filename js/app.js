@@ -105,7 +105,7 @@ function renderError() {
   if (thead) {
     thead.innerHTML = "";
   }
-  tbody.innerHTML = '<tr><td>No se pudo cargar el archivo JSON.</td></tr>';
+  tbody.innerHTML = '<tr><td>No se pudo mostrar el listado en este momento.</td></tr>';
 }
 
 function loadRecords() {

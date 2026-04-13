@@ -109,7 +109,7 @@ function renderDetailPage(data) {
 }
 
 function renderError(message) {
-  setText("person-name", "No se pudo cargar la ficha");
+  setText("person-name", "No se pudo mostrar esta ficha");
   setText("person-subtitle", "");
   setText("person-summary", message);
   renderFacts([]);
@@ -122,14 +122,14 @@ function loadDetailPage() {
   var dataPath = getDetailDataPath();
 
   if (!dataPath) {
-    renderError("No se ha indicado ningún archivo de contenido.");
+    renderError("Esta página no está disponible en este momento.");
     return;
   }
 
   fetch(dataPath)
     .then(function (response) {
       if (!response.ok) {
-        throw new Error("No se pudo leer el archivo de contenido.");
+        throw new Error("Contenido no disponible");
       }
 
       return response.json();
@@ -138,7 +138,7 @@ function loadDetailPage() {
       renderDetailPage(data);
     })
     .catch(function () {
-      renderError("No se pudo cargar el archivo de contenido.");
+      renderError("No se pudo mostrar el contenido de esta memoria personal.");
     });
 }
 
