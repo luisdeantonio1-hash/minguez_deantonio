@@ -1,54 +1,3 @@
-function parseCsv(text) {
-  var lines = text.trim().split(/\r?\n/);
-  if (lines.length === 0) {
-    return [];
-  }
-
-  var headers = splitCsvLine(lines[0]);
-
-  return lines.slice(1).filter(Boolean).map(function (line) {
-    var values = splitCsvLine(line);
-    var row = {};
-
-    headers.forEach(function (header, index) {
-      row[header] = values[index] || "";
-    });
-
-    return row;
-  });
-}
-
-function splitCsvLine(line) {
-  var values = [];
-  var current = "";
-  var insideQuotes = false;
-
-  for (var index = 0; index < line.length; index += 1) {
-    var character = line[index];
-
-    if (character === '"') {
-      if (insideQuotes && line[index + 1] === '"') {
-        current += '"';
-        index += 1;
-      } else {
-        insideQuotes = !insideQuotes;
-      }
-      continue;
-    }
-
-    if (character === "," && !insideQuotes) {
-      values.push(current);
-      current = "";
-      continue;
-    }
-
-    current += character;
-  }
-
-  values.push(current);
-  return values;
-}
-
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -62,43 +11,101 @@ function getPageConfig() {
   var page = document.querySelector(".page");
 
   return {
-    recordsSrc: page ? page.dataset.recordsSrc : "data/fallecidos.csv",
+    recordsSrc: page ? page.dataset.recordsSrc : "data/fallecidos.json",
     detailTemplate: page ? page.dataset.detailTemplate : "persona.html",
-    detailContent: page ? page.dataset.detailContent : "data/persona-ejemplo.json"
+    detailContent: page ? page.dataset.detailContent : "data/personas/domingo-minguez-paez.json"
   };
 }
 
+function isPrimitiveValue(value) {
+  return value === null || ["string", "number", "boolean"].indexOf(typeof value) !== -1;
+}
+
+function getColumns(records) {
+  var columns = [];
+
+  records.forEach(function (record) {
+    Object.keys(record).forEach(function (key) {
+      if (!isPrimitiveValue(record[key])) {
+        return;
+      }
+
+      if (columns.indexOf(key) === -1) {
+        columns.push(key);
+      }
+    });
+  });
+
+  return columns;
+}
+
+function getCellValue(record, key) {
+  var value = record[key];
+  return value === null || value === undefined ? "" : String(value);
+}
+
+function formatColumnLabel(key) {
+  if (!key) {
+    return "";
+  }
+
+  return key.charAt(0).toUpperCase() + key.slice(1);
+}
+
 function buildDetailUrl(record, config) {
+  var detailConfig = record.detail && typeof record.detail === "object" ? record.detail : {};
   var params = new URLSearchParams();
-  params.set("data", config.detailContent);
+  params.set("data", detailConfig.data || config.detailContent);
   params.set("nombre", record.nombre || "");
-  return config.detailTemplate + "?" + params.toString();
+  return (detailConfig.template || config.detailTemplate) + "?" + params.toString();
 }
 
 function renderTable(records) {
+  var thead = document.getElementById("records-head");
   var tbody = document.getElementById("records-body");
   var config = getPageConfig();
+  var columns = getColumns(records);
 
   if (!records.length) {
-    tbody.innerHTML = '<tr><td colspan="3">No hay datos.</td></tr>';
+    if (thead) {
+      thead.innerHTML = "";
+    }
+    tbody.innerHTML = '<tr><td>No hay datos.</td></tr>';
     return;
+  }
+
+  if (thead) {
+    thead.innerHTML =
+      "<tr>" +
+      columns.map(function (column) {
+        return "<th>" + escapeHtml(formatColumnLabel(column)) + "</th>";
+      }).join("") +
+      "</tr>";
   }
 
   tbody.innerHTML = records.map(function (record) {
     var detailUrl = buildDetailUrl(record, config);
     return (
       '<tr class="table-row-link">' +
-        '<td><a class="row-link" href="' + escapeHtml(detailUrl) + '">' + escapeHtml(record.nombre) + "</a></td>" +
-        '<td><a class="row-link" href="' + escapeHtml(detailUrl) + '">' + escapeHtml(record.fecha) + "</a></td>" +
-        '<td><a class="row-link" href="' + escapeHtml(detailUrl) + '">' + escapeHtml(record.edad) + "</a></td>" +
+        columns.map(function (column) {
+          return (
+            '<td><a class="row-link" href="' + escapeHtml(detailUrl) + '">' +
+              escapeHtml(getCellValue(record, column)) +
+            "</a></td>"
+          );
+        }).join("") +
       "</tr>"
     );
   }).join("");
 }
 
 function renderError() {
+  var thead = document.getElementById("records-head");
   var tbody = document.getElementById("records-body");
-  tbody.innerHTML = '<tr><td colspan="3">No se pudo cargar el archivo CSV.</td></tr>';
+  if (thead) {
+    thead.innerHTML = "";
+  }
+  tbody.innerHTML = '<tr><td>No se pudo cargar el archivo JSON.</td></tr>';
 }
 
 function loadRecords() {
@@ -107,13 +114,14 @@ function loadRecords() {
   fetch(config.recordsSrc)
     .then(function (response) {
       if (!response.ok) {
-        throw new Error("CSV no disponible");
+        throw new Error("JSON no disponible");
       }
 
-      return response.text();
+      return response.json();
     })
-    .then(function (text) {
-      renderTable(parseCsv(text));
+    .then(function (payload) {
+      var records = Array.isArray(payload) ? payload : payload.records;
+      renderTable(Array.isArray(records) ? records : []);
     })
     .catch(function () {
       renderError();
