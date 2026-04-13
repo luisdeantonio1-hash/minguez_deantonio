@@ -1,199 +1,64 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
-<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Aptos;
-	panose-1:0 0 0 0 0 0 0 0 0 0;}
-@font-face
-	{font-family:Algerian;
-	panose-1:4 2 7 5 4 10 2 6 7 2;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:8.0pt;
-	margin-left:0cm;
-	line-height:107%;
-	font-size:11.0pt;
-	font-family:"Aptos",serif;}
-.MsoChpDefault
-	{font-family:"Aptos",serif;}
-.MsoPapDefault
-	{margin-bottom:8.0pt;
-	line-height:107%;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:70.9pt 3.0cm 70.9pt 3.0cm;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Familia MÃ­nguez - De Antonio</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+<body>
+  <main
+    class="page"
+    data-records-src="data/fallecidos.csv"
+    data-detail-template="persona.html"
+    data-detail-content="data/persona-ejemplo.json"
+  >
+    <section class="hero">
+      <p class="eyebrow">Memoria familiar</p>
+      <h1>Familia MÃ­nguez - De Antonio</h1>
+      <p class="lead">
+        Fallecidos enterrados en la tumba familiar de El Guijar.
+      </p>
+      <p class="description">
+        La tabla se rellena automÃ¡ticamente desde un archivo CSV externo para que
+        mantener el listado sea sencillo y no requiera editar el HTML.
+      </p>
+      <p class="description">
+        ConfiguraciÃ³n actual del detalle: plantilla <strong>persona.html</strong> y
+        contenido <strong>data/persona-ejemplo.json</strong>.
+      </p>
+    </section>
 
-<body lang=ES style='word-wrap:break-word'>
+    <section class="table-section" aria-labelledby="tabla-fallecidos">
+      <div class="table-header">
+        <h2 id="tabla-fallecidos">Listado memorial</h2>
+        <p>RelaciÃ³n cronolÃ³gica disponible en el archivo del proyecto.</p>
+      </div>
 
-<div class=WordSection1>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th>Edad</th>
+            </tr>
+          </thead>
+          <tbody id="records-body">
+            <tr>
+              <td colspan="3">Cargando datos...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-<p class=MsoNormal align=center style='text-align:center'><span
-style='font-size:12.0pt;line-height:107%;font-family:Algerian'>FAMILIA MÍNGUEZ
-– DE ANTONIO</span></p>
+  <noscript class="noscript-message">
+    Esta pÃ¡gina necesita JavaScript para cargar el archivo CSV.
+  </noscript>
 
-<p class=MsoNormal><span style='font-size:10.0pt;line-height:107%;font-family:
-Algerian'>&nbsp;</span></p>
-
-<p class=MsoNormal></p>
-
-<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=511
- style='width:383.0pt;border-collapse:collapse'>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Domingo Mínguez Páez</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>11 de
-  agosto de 1957</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>67
-  años</span></p>
-  </td>
- </tr>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Eladio de Antonio de la Calle</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>8 de
-  febrero de 1959</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>65
-  años</span></p>
-  </td>
- </tr>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Lázara Otero Velasco</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>13 de
-  mayo de 1960</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>94
-  años</span></p>
-  </td>
- </tr>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Antonio de Antonio Rivera</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>29 de
-  abril de 1980</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>56
-  años</span></p>
-  </td>
- </tr>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Josefa González Otero</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>31 de
-  marzo de 1984</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>89
-  años</span></p>
-  </td>
- </tr>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Josefa Rivera Velasco</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>2 de
-  enero de 1996</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>92
-  años</span></p>
-  </td>
- </tr>
- <tr style='height:19.95pt'>
-  <td width=236 nowrap valign=top style='width:177.2pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:10.0pt;font-family:Algerian'>Isabel Mínguez González</span></p>
-  </td>
-  <td width=189 nowrap valign=top style='width:5.0cm;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>30 de
-  septiembre de 2009</span></p>
-  </td>
-  <td width=85 nowrap valign=top style='width:64.05pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:19.95pt'>
-  <p class=MsoNormal align=right style='margin-bottom:0cm;text-align:right;
-  line-height:normal'><span style='font-size:10.0pt;font-family:Algerian'>88
-  años</span></p>
-  </td>
- </tr>
-</table>
-
-<p class=MsoNormal align=center style='text-align:center'><span
-style='font-size:12.0pt;line-height:107%;font-family:Algerian'>&nbsp;</span></p>
-
-</div>
-
+  <script src="js/app.js"></script>
 </body>
-
 </html>

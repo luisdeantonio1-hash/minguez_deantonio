@@ -1,0 +1,41 @@
+{
+  "name": "Josefa",
+  "subtitle": "Plantilla base para futuras biografías familiares",
+  "summary": "Este archivo sirve como ejemplo de cómo rellenar una página personal desde un fichero externo. Por ahora todas las filas de la tabla enlazan a esta misma ficha.",
+  "facts": [
+    {
+      "label": "Lugar vinculado",
+      "value": "El Guijar"
+    },
+    {
+      "label": "Tipo de contenido",
+      "value": "Ejemplo de configuración"
+    },
+    {
+      "label": "Uso recomendado",
+      "value": "Duplicar este JSON y adaptar los campos para cada persona"
+    }
+  ],
+  "heroImage": {
+    "src": "images/retrato-ejemplo.svg",
+    "alt": "Retrato ilustrativo de ejemplo",
+    "caption": "Imagen de muestra para la ficha personal."
+  },
+  "biography": [
+    "Aquí puedes escribir uno o varios párrafos con la información personal de la persona: contexto familiar, notas biográficas, recuerdos o cualquier texto que quieras conservar.",
+    "La plantilla admite tantos párrafos como necesites, y también una galería con imágenes y pies de foto.",
+    "Cuando quieras crear una ficha real, puedes copiar este archivo, renombrarlo y cambiar cada valor sin modificar la plantilla HTML."
+  ],
+  "gallery": [
+    {
+      "src": "images/retrato-ejemplo.svg",
+      "alt": "Retrato de ejemplo",
+      "caption": "Retrato o fotografía principal."
+    },
+    {
+      "src": "images/documento-ejemplo.svg",
+      "alt": "Documento de ejemplo",
+      "caption": "Documento, recordatorio o imagen secundaria."
+    }
+  ]
+}

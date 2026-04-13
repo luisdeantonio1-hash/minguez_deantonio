@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ficha personal</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="page page--detail">
+    <p class="back-link"><a href="index.html">Volver al listado</a></p>
+
+    <section class="hero hero--detail">
+      <p class="eyebrow">Ficha personal</p>
+      <h1 id="person-name">Cargando...</h1>
+      <p class="lead" id="person-subtitle"></p>
+      <p class="description" id="person-summary"></p>
+    </section>
+
+    <section class="detail-grid">
+      <article class="detail-card">
+        <h2>Información general</h2>
+        <dl class="detail-list" id="person-facts">
+          <div>
+            <dt>Estado</dt>
+            <dd>Cargando datos...</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="detail-card">
+        <h2>Imagen principal</h2>
+        <figure class="detail-figure">
+          <img id="person-image" alt="">
+          <figcaption id="person-image-caption"></figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="detail-card">
+      <h2>Biografía</h2>
+      <div id="person-biography"></div>
+    </section>
+
+    <section class="detail-card">
+      <div class="table-header">
+        <h2>Galería</h2>
+        <p>Ejemplo de imágenes asociadas a la ficha.</p>
+      </div>
+      <div class="gallery-grid" id="person-gallery"></div>
+    </section>
+  </main>
+
+  <noscript class="noscript-message">
+    Esta página necesita JavaScript para cargar el contenido externo.
+  </noscript>
+
+  <script src="js/detail.js"></script>
+</body>
+</html>
