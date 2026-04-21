@@ -231,7 +231,12 @@ function loadPersonRecords(paths) {
 
 function buildDetailUrl(record, config) {
   var params = new URLSearchParams();
-  params.set("data", record.__personPath || "");
+  if (record.id) {
+    params.set("id", record.id);
+  }
+  if (record.__personPath) {
+    params.set("data", record.__personPath);
+  }
   return (config.detailTemplate || "persona.html") + "?" + params.toString();
 }
 

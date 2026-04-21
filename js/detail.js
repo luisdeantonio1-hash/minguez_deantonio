@@ -1,15 +1,55 @@
-function escapeHtml(value) {
+﻿function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
 
+function getQueryParams() {
+  return new URLSearchParams(window.location.search);
+}
+
 function getDetailDataPath() {
-  var params = new URLSearchParams(window.location.search);
-  return params.get("data");
+  return getQueryParams().get("data");
+}
+
+function getDetailPersonId() {
+  return getQueryParams().get("id");
+}
+
+function fetchPersonIndex() {
+  return fetch("data/personas-index.json")
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Indice no disponible");
+      }
+      return response.json();
+    })
+    .then(function (payload) {
+      return payload && payload.byId && typeof payload.byId === "object" ? payload.byId : {};
+    });
+}
+
+function resolveDetailDataPath() {
+  var directPath = getDetailDataPath();
+  if (directPath) {
+    return Promise.resolve(directPath);
+  }
+
+  var personId = getDetailPersonId();
+  if (!personId) {
+    return Promise.resolve(null);
+  }
+
+  return fetchPersonIndex()
+    .then(function (byId) {
+      return byId[personId] || null;
+    })
+    .catch(function () {
+      return null;
+    });
 }
 
 function setText(id, value) {
@@ -19,6 +59,29 @@ function setText(id, value) {
   }
 }
 
+function setTreeLink(dataPath, personId) {
+  var element = document.getElementById("person-tree-link");
+  if (!element) {
+    return;
+  }
+
+  if (personId) {
+    var idParams = new URLSearchParams();
+    idParams.set("id", personId);
+    element.href = "arbol.html?" + idParams.toString();
+    return;
+  }
+
+  if (!dataPath) {
+    element.href = "arbol.html";
+    return;
+  }
+
+  var params = new URLSearchParams();
+  params.set("data", dataPath);
+  element.href = "arbol.html?" + params.toString();
+}
+
 function renderFacts(facts) {
   var target = document.getElementById("person-facts");
   if (!target) {
@@ -26,7 +89,7 @@ function renderFacts(facts) {
   }
 
   if (!facts || !facts.length) {
-    target.innerHTML = "<div><dt>Información</dt><dd>No disponible.</dd></div>";
+    target.innerHTML = "<div><dt>Informacion</dt><dd>No disponible.</dd></div>";
     return;
   }
 
@@ -47,7 +110,7 @@ function renderBiography(paragraphs) {
   }
 
   if (!paragraphs || !paragraphs.length) {
-    target.innerHTML = "<p>No hay biografía disponible.</p>";
+    target.innerHTML = "<p>No hay biografia disponible.</p>";
     return;
   }
 
@@ -83,7 +146,7 @@ function renderGallery(images) {
   }
 
   if (!images || !images.length) {
-    target.innerHTML = "<p>No hay imágenes adicionales.</p>";
+    target.innerHTML = "<p>No hay imagenes adicionales.</p>";
     return;
   }
 
@@ -98,7 +161,7 @@ function renderGallery(images) {
 }
 
 function renderDetailPage(data) {
-  document.title = (data.name || "Ficha personal") + " | Familia Mínguez - De Antonio";
+  document.title = (data.name || "Ficha personal") + " | Familia Minguez - De Antonio";
   setText("person-name", data.name || "Ficha personal");
   setText("person-subtitle", data.subtitle || "");
   setText("person-summary", data.summary || "");
@@ -119,23 +182,27 @@ function renderError(message) {
 }
 
 function loadDetailPage() {
-  var dataPath = getDetailDataPath();
+  resolveDetailDataPath()
+    .then(function (dataPath) {
+      setTreeLink(dataPath, getDetailPersonId());
 
-  if (!dataPath) {
-    renderError("Esta página no está disponible en este momento.");
-    return;
-  }
-
-  fetch(dataPath)
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error("Contenido no disponible");
+      if (!dataPath) {
+        renderError("Esta pagina no esta disponible en este momento.");
+        return;
       }
 
-      return response.json();
-    })
-    .then(function (data) {
-      renderDetailPage(data);
+      return fetch(dataPath)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Contenido no disponible");
+          }
+
+          return response.json();
+        })
+        .then(function (data) {
+          setTreeLink(dataPath, data.id || getDetailPersonId());
+          renderDetailPage(data);
+        });
     })
     .catch(function () {
       renderError("No se pudo mostrar el contenido de esta memoria personal.");
