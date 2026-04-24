@@ -167,7 +167,7 @@
 /* ── SVG connector lines ── */
 .tree-conn-partner {
   stroke: var(--color-border-strong, #aaa);
-  stroke-width: 1.5;
+  stroke-width: 3;
   fill: none;
 }
 
@@ -177,7 +177,7 @@
 
 .tree-conn-child {
   stroke: var(--color-border, #ccc);
-  stroke-width: 1.5;
+  stroke-width: 2.5;
   fill: none;
 }
 
