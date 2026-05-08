@@ -1,6 +1,47 @@
 {
   "unions": [
     {
+      "id": "u-????-liduvina",
+      "partners": [
+        "liduvina-velasco"
+      ],
+      "type": "married",
+      "children": [
+        "josefa-rivera-velasco"
+      ]
+    },
+    {
+      "id": "u-????-inocenta",
+      "partners": [
+        "inocenta-de-la-calle"
+      ],
+      "type": "married",
+      "children": [
+        "eladio-de-antonio-de-la-calle"
+      ]
+    },
+    {
+      "id": "u-bruno-brigida",
+      "partners": [
+        "brigida-paez",
+        "bruno-minguez"
+      ],
+      "type": "married",
+      "children": [
+        "domingo-minguez-paez"
+      ]
+    },
+    {
+      "id": "u-domingo-lazara",
+      "partners": [
+        "domingo-gonzalez",
+        "lazara-otero-velasco"
+      ],
+      "type": "married",
+      "children": [
+        "josefa-gonzalez-otero"
+      ]
+    },{
       "id": "u-eladio-josefa",
       "partners": [
         "eladio-de-antonio-de-la-calle",
@@ -30,15 +71,15 @@
       ],
       "type": "married",
       "children": [
-        "fernando-de-antonio-minguez",
-        "luis-de-antonio-minguez"
+        "luis-de-antonio-minguez",
+        "fernando-de-antonio-minguez"
       ]
     },
     {
       "id": "u-luis-asuncion",
       "partners": [
-        "luis-de-antonio-minguez",
-        "asuncion-martin-tapias"
+        "asuncion-martin-tapias",
+        "luis-de-antonio-minguez"
       ],
       "type": "married",
       "children": [
