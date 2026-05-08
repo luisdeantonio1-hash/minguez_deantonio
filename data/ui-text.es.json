@@ -40,7 +40,7 @@
       "general": "Informacion general",
       "status": "Estado",
       "mainImage": "Imagen principal",
-      "biography": "Biografia",
+      "biography": "Biografía",
       "gallery": "Galeria",
       "galleryDescription": "Imagenes y documentos asociados a esta memoria personal."
     },
@@ -48,7 +48,7 @@
       "loading": "Cargando datos...",
       "info": "Informacion",
       "notAvailable": "No disponible.",
-      "bioNotAvailable": "No hay biografia disponible.",
+      "bioNotAvailable": "No hay biografía disponible.",
       "noMainImage": "Sin imagen principal.",
       "noGalleryImages": "No hay imagenes adicionales.",
       "errorTitle": "No se pudo mostrar esta ficha",
@@ -57,10 +57,10 @@
     }
   },
   "tree": {
-    "title": "Arbol genealogico - Familia Minguez · De Antonio",
+    "title": "Arbol genealogico - Familia Minguez - De Antonio",
     "hero": {
       "eyebrow": "Arbol genealogico",
-      "heading": "Familia Minguez · De Antonio",
+      "heading": "Familia Minguez - De Antonio",
       "lead": "Representacion visual de los lazos familiares."
     },
     "sectionAria": "Arbol genealogico interactivo",

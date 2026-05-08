@@ -1,0 +1,31 @@
+{
+  "id": "luis-de-antonio-minguez",
+  "name": "Luis de Antonio Minguez",
+  "gender": "male",
+  "subtitle": "Datos biograficos de Luis de Antonio Minguez",
+  "summary": "Ficha en preparacion. Se conservan por ahora los datos familiares basicos.",
+  "facts": [
+    {
+      "label": "Nombre completo",
+      "value": "Luis de Antonio Minguez"
+    },
+    {
+      "label": "Padres",
+      "value": "Antonio de Antonio Rivera e Isabel Minguez Gonzalez"
+    },
+    {
+      "label": "Nacimiento",
+      "value": "Pendiente de documentar"
+    },
+    {
+      "label": "Fallecimiento",
+      "value": "Pendiente de documentar"
+    }
+  ],
+  "heroImage": null,
+  "biography": [
+    "Esta ficha se ha creado para mantener la coherencia genealogica del arbol.",
+    "Se completara con fechas, lugares, imagenes y documentacion cuando esten disponibles."
+  ],
+  "gallery": []
+}
